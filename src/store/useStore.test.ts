@@ -53,6 +53,41 @@ describe('store actions', () => {
     expect(useStore.getState().projects).toHaveLength(0)
     expect(useStore.getState().activeProjectId).toBeNull()
   })
+
+  it('closes a non-active project without changing activeProjectId', () => {
+    const { addProject, closeProject } = useStore.getState()
+    addProject('P1')
+    const p1 = useStore.getState().projects[0].id
+    addProject('P2')
+    const p2 = useStore.getState().projects[1].id
+    useStore.setState({ activeProjectId: p1 })
+    closeProject(p2)
+    expect(useStore.getState().activeProjectId).toBe(p1)
+    expect(useStore.getState().projects).toHaveLength(1)
+  })
+
+  it('addProject defaults to a default name when given empty string', () => {
+    useStore.getState().addProject('')
+    expect(useStore.getState().projects[0].name).toBe('مشروع جديد')
+  })
+
+  it('addProject trims whitespace from name', () => {
+    useStore.getState().addProject('  Work  ')
+    expect(useStore.getState().projects[0].name).toBe('Work')
+  })
+
+  it('updateTodo applies partial patch without overwriting other fields', () => {
+    const { addProject, addTodo, updateTodo } = useStore.getState()
+    addProject('P')
+    const pid = useStore.getState().projects[0].id
+    addTodo(pid, 'Task', 'low')
+    const tid = useStore.getState().projects[0].todos[0].id
+    updateTodo(pid, tid, { priority: 'high' })
+    const todo = useStore.getState().projects[0].todos[0]
+    expect(todo.priority).toBe('high')
+    expect(todo.text).toBe('Task')
+    expect(todo.status).toBe('todo')
+  })
 })
 
 describe('sortTodos', () => {
@@ -73,6 +108,11 @@ describe('sortTodos', () => {
     ]
     expect(sortTodos(todos, false).map((t) => t.id)).toEqual(['1', '2'])
   })
+
+  it('returns the same array reference when sorting is off', () => {
+    const todos = [{ id: '1', text: 'a', status: 'todo' as const, priority: 'low' as const, createdAt: 1 }]
+    expect(sortTodos(todos, false)).toBe(todos)
+  })
 })
 
 describe('import / export round-trip', () => {
@@ -91,8 +131,14 @@ describe('import / export round-trip', () => {
     freshStore()
     importData(data)
     const restored = useStore.getState().projects[0]
-    expect(    restored.name).toBe('P1')
+    expect(restored.name).toBe('P1')
     expect(restored.todos[0].text).toBe('Task')
+  })
+
+  it('importData resets sortByPriority to false', () => {
+    useStore.setState({ sortByPriority: true })
+    useStore.getState().importData({ version: 1, projects: [{ id: 'p', name: 'P', todos: [] }] })
+    expect(useStore.getState().sortByPriority).toBe(false)
   })
 })
 

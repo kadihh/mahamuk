@@ -2,12 +2,13 @@ import { LanguageProvider, useLanguage } from './i18n/LanguageProvider'
 import { ProjectTabs } from './components/ProjectTabs'
 import { Board } from './components/Board'
 import { Toolbar } from './components/Toolbar'
+import { ErrorBoundary } from './components/ErrorBoundary'
 import { useStore } from './store/useStore'
 import { useTheme } from './theme/useTheme'
 
 function Shell() {
   const { t } = useLanguage()
-  const projects = useStore((s) => s.projects)
+  const projectCount = useStore((s) => s.projects.length)
 
   return (
     <div className="mx-auto flex h-screen max-w-7xl flex-col gap-3 p-4">
@@ -18,7 +19,7 @@ function Shell() {
 
       <ProjectTabs />
 
-      {projects.length === 0 ? (
+      {projectCount === 0 ? (
         <p className="py-10 text-center text-sm text-ink-soft">{t('project.empty')}</p>
       ) : (
         <>
@@ -34,7 +35,9 @@ export default function App() {
   useTheme()
   return (
     <LanguageProvider>
-      <Shell />
+      <ErrorBoundary>
+        <Shell />
+      </ErrorBoundary>
     </LanguageProvider>
   )
 }

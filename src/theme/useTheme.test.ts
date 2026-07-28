@@ -41,9 +41,9 @@ describe('useTheme', () => {
     expect(result.current.isDark).toBe(false)
   })
 
-  it('toggles to light and persists the choice', () => {
+  it('sets light mode and persists the choice', () => {
     const { result } = renderHook(() => useTheme())
-    act(() => result.current.toggle())
+    act(() => result.current.setMode('light'))
     expect(document.documentElement.classList.contains('dark')).toBe(false)
     expect(localStorage.getItem('mahamok.theme')).toBe('light')
   })

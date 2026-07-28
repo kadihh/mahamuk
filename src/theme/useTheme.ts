@@ -37,10 +37,6 @@ export function useTheme() {
   }, [])
 
   const setMode = useCallback((m: ThemeMode) => setModeState(m), [])
-  const toggle = useCallback(
-    () => setModeState((prev) => (prev === 'light' ? 'dark' : 'light')),
-    [],
-  )
 
-  return { mode, setMode, toggle, isDark: mode === 'dark' || (mode === 'system' && systemPrefersDark()) }
+  return { mode, setMode, isDark: mode === 'dark' || (mode === 'system' && systemPrefersDark()) }
 }

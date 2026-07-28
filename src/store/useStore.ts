@@ -10,8 +10,15 @@ export const PRIORITY_RANK: Record<Priority, number> = {
   low: 2,
 }
 
-const STATUSES: Status[] = ['todo', 'inprogress', 'blocked', 'done']
-const PRIORITIES: Priority[] = ['high', 'medium', 'low']
+export const STATUSES: Status[] = ['todo', 'inprogress', 'blocked', 'done']
+export const PRIORITIES: Priority[] = ['high', 'medium', 'low']
+
+export const STATUS_META: Record<Status, { i18nKey: string; accent: string; next: Status }> = {
+  todo:       { i18nKey: 'col.todo',       accent: 'border-t-brand-500', next: 'inprogress' },
+  inprogress: { i18nKey: 'col.inprogress', accent: 'border-t-prio-medium', next: 'blocked' },
+  blocked:    { i18nKey: 'col.blocked',    accent: 'border-t-prio-high', next: 'done' },
+  done:       { i18nKey: 'col.done',       accent: 'border-t-prio-low', next: 'todo' },
+}
 
 function sanitizeStatus(value: unknown): Status {
   return STATUSES.includes(value as Status) ? (value as Status) : 'todo'
@@ -149,6 +156,7 @@ export const useStore = create<StoreState>()(
         set({
           projects: safe.projects,
           activeProjectId: safe.projects[0]?.id ?? null,
+          sortByPriority: false,
         })
       },
 
@@ -193,9 +201,6 @@ export function validateAppData(data: unknown): AppData {
 }
 
 export function sortTodos(todos: Todo[], byPriority: boolean): Todo[] {
-  const copy = [...todos]
-  if (byPriority) {
-    copy.sort((a, b) => PRIORITY_RANK[a.priority] - PRIORITY_RANK[b.priority])
-  }
-  return copy
+  if (!byPriority) return todos
+  return [...todos].sort((a, b) => PRIORITY_RANK[a.priority] - PRIORITY_RANK[b.priority])
 }

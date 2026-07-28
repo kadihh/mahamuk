@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import { Plus } from 'lucide-react'
-import { useStore, type Priority } from '../store/useStore'
+import { useStore, type Priority, PRIORITIES } from '../store/useStore'
 import { useLanguage } from '../i18n/LanguageProvider'
-
-const PRIORITIES: Priority[] = ['high', 'medium', 'low']
+import { useShallow } from 'zustand/react/shallow'
 
 export function AddTodo() {
   const { t } = useLanguage()
-  const activeProjectId = useStore((s) => s.activeProjectId)
-  const addTodo = useStore((s) => s.addTodo)
+  const { activeProjectId, addTodo } = useStore(useShallow((s) => ({
+    activeProjectId: s.activeProjectId,
+    addTodo: s.addTodo,
+  })))
 
   const [text, setText] = useState('')
   const [priority, setPriority] = useState<Priority>('medium')

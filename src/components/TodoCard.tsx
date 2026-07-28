@@ -1,22 +1,13 @@
-import { useState, type DragEvent } from 'react'
+import { useEffect, useState, type DragEvent } from 'react'
 import { Pencil, Trash2, Check, X } from 'lucide-react'
-import type { Priority, Status, Todo } from '../store/useStore'
-import { useStore } from '../store/useStore'
+import type { Priority, Todo } from '../store/useStore'
+import { useStore, PRIORITIES, STATUS_META } from '../store/useStore'
 import { useLanguage } from '../i18n/LanguageProvider'
-
-const PRIORITIES: Priority[] = ['high', 'medium', 'low']
 
 const PRIO_CLASS: Record<Priority, string> = {
   high: 'bg-prio-high/15 text-prio-high',
   medium: 'bg-prio-medium/15 text-prio-medium',
   low: 'bg-prio-low/15 text-prio-low',
-}
-
-const NEXT_STATUS: Record<Status, Status> = {
-  todo: 'inprogress',
-  inprogress: 'blocked',
-  blocked: 'done',
-  done: 'todo',
 }
 
 export function TodoCard({ projectId, todo }: { projectId: string; todo: Todo }) {
@@ -28,6 +19,11 @@ export function TodoCard({ projectId, todo }: { projectId: string; todo: Todo })
   const [editing, setEditing] = useState(false)
   const [text, setText] = useState(todo.text)
   const [priority, setPriority] = useState<Priority>(todo.priority)
+
+  useEffect(() => {
+    setText(todo.text)
+    setPriority(todo.priority)
+  }, [todo.text, todo.priority])
 
   const save = () => {
     updateTodo(projectId, todo.id, { text: text.trim() || todo.text, priority })
@@ -84,12 +80,11 @@ export function TodoCard({ projectId, todo }: { projectId: string; todo: Todo })
         <span className={`rounded px-2 py-0.5 text-xs ${PRIO_CLASS[todo.priority]}`}>
           {t(`prio.${todo.priority}`)}
         </span>
-        <div className="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+        <div className="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100 sm:[.group:hover_&]:opacity-100">
           <button
-            onClick={() => moveTodo(projectId, todo.id, NEXT_STATUS[todo.status])}
+            onClick={() => moveTodo(projectId, todo.id, STATUS_META[todo.status].next)}
             className="text-xs text-brand-600 hover:text-brand-500"
-            aria-label="move"
-            title="Move to next column"
+            aria-label={t('todo.move')}
           >
             →
           </button>

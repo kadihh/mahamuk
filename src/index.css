@@ -41,7 +41,3 @@
   --color-prio-medium: oklch(0.78 0.14 75);
   --color-prio-low: oklch(0.78 0.13 150);
 }
-
-* {
-  box-sizing: border-box;
-}

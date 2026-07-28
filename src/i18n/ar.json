@@ -28,5 +28,7 @@
   "dialog.importTitle": "استيراد المشاريع",
   "dialog.importHint": "اختر ملف JSON صادر من مهموك.",
   "dialog.importError": "ملف غير صالح.",
-  "empty.col": "لا مهام"
+  "empty.col": "لا مهام",
+  "todo.move": "نقل",
+  "toolbar.theme": "المظهر"
 }

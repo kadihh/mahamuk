@@ -3,6 +3,7 @@ import { Download, Upload, ArrowDownAZ, Languages, Moon, Sun, Monitor } from 'lu
 import { useStore, validateAppData } from '../store/useStore'
 import { useLanguage } from '../i18n/LanguageProvider'
 import { useTheme, type ThemeMode } from '../theme/useTheme'
+import { useShallow } from 'zustand/react/shallow'
 import { AddTodo } from './AddTodo'
 
 const THEME_ICON: Record<ThemeMode, typeof Moon> = {
@@ -14,13 +15,16 @@ const THEME_ICON: Record<ThemeMode, typeof Moon> = {
 export function Toolbar() {
   const { t, toggleLanguage } = useLanguage()
   const { mode, setMode } = useTheme()
-  const sortByPriority = useStore((s) => s.sortByPriority)
-  const setSortByPriority = useStore((s) => s.setSortByPriority)
-  const exportData = useStore((s) => s.exportData)
-  const importData = useStore((s) => s.importData)
+  const { sortByPriority, setSortByPriority, exportData, importData } =
+    useStore(useShallow((s) => ({
+      sortByPriority: s.sortByPriority,
+      setSortByPriority: s.setSortByPriority,
+      exportData: s.exportData,
+      importData: s.importData,
+    })))
 
   const fileRef = useRef<HTMLInputElement>(null)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const ThemeIcon = THEME_ICON[mode]
 
@@ -37,7 +41,7 @@ export function Toolbar() {
     a.href = url
     a.download = `mahamok-${new Date().toISOString().slice(0, 10)}.json`
     a.click()
-    URL.revokeObjectURL(url)
+    setTimeout(() => URL.revokeObjectURL(url), 100)
   }
 
   const handleImportFile = async (file: File) => {
@@ -45,11 +49,11 @@ export function Toolbar() {
       const text = await file.text()
       const parsed = JSON.parse(text)
       const data = validateAppData(parsed)
-      if (data.projects.length === 0) throw new Error('empty')
+      if (data.projects.length === 0) throw new Error('No valid projects found')
       importData(data)
-      setError(false)
-    } catch {
-      setError(true)
+      setError(null)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Invalid file')
     }
   }
 
@@ -93,7 +97,7 @@ export function Toolbar() {
         </button>
         <button
           onClick={cycleTheme}
-          aria-label="theme"
+          aria-label={t('toolbar.theme')}
           className="flex items-center gap-1 rounded-lg border border-border px-3 py-2 text-sm text-ink-soft hover:text-ink"
         >
           <ThemeIcon size={16} />
@@ -105,7 +109,7 @@ export function Toolbar() {
           <Languages size={16} /> {t('lang.toggle')}
         </button>
       </div>
-      {error && <p className="w-full text-xs text-prio-high">{t('dialog.importError')}</p>}
+      {error && <p className="w-full text-xs text-prio-high">{error}</p>}
     </div>
   )
 }
