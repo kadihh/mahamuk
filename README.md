@@ -1,4 +1,4 @@
-# Mahamuk (مهموك)
+# Mahamuk (مهامك)
 
 A fully local, bilingual (Arabic-first / English) Kanban task manager. No backend — all data lives in your browser's `localStorage`.
 

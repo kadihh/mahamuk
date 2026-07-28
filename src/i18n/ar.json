@@ -1,5 +1,5 @@
 {
-  "app.title": "مهموك",
+  "app.title": "مهامك",
   "app.tagline": "مدير مهام محلي بالكامل",
   "lang.toggle": "English",
   "project.new": "مشروع جديد",
@@ -26,7 +26,7 @@
   "toolbar.sortOn": "مُفعّل",
   "toolbar.sortOff": "مُعطّل",
   "dialog.importTitle": "استيراد المشاريع",
-  "dialog.importHint": "اختر ملف JSON صادر من مهموك.",
+  "dialog.importHint": "اختر ملف JSON صادر من مهامك.",
   "dialog.importError": "ملف غير صالح.",
   "empty.col": "لا مهام",
   "todo.move": "نقل",
