@@ -31,7 +31,7 @@ export function ProjectTabs() {
                 setActiveProject(p.id)
               }
             }}
-            className={`group flex cursor-pointer items-center gap-2 rounded-t-lg border border-b-0 px-4 py-2 text-sm ${
+            className={`group flex cursor-pointer items-center gap-2 rounded-t-lg border border-b-0 px-4 py-2 text-sm transition-colors duration-200 ${
               active
                 ? 'border-border bg-surface text-ink'
                 : 'bg-muted text-ink-soft hover:bg-surface'

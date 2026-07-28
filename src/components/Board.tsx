@@ -49,8 +49,8 @@ export const Column = React.memo(function Column({
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
       onDrop={onDrop}
-      className={`flex min-w-0 flex-1 flex-col rounded-xl border border-border bg-muted border-t-4 ${STATUS_META[status].accent} ${
-        dragOver ? 'ring-2 ring-brand-500' : ''
+      className={`flex min-w-0 flex-1 flex-col rounded-xl border border-border bg-muted border-t-4 transition-all duration-200 ${STATUS_META[status].accent} ${
+        dragOver ? 'ring-2 ring-brand-500 scale-[1.02]' : ''
       }`}
     >
       <div className="flex items-center justify-between px-3 py-2">
@@ -76,7 +76,7 @@ export function Board() {
   if (!project) return null
 
   return (
-    <div className="grid flex-1 grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid flex-1 grid-cols-1 gap-3 animate-fade-in sm:grid-cols-2 lg:grid-cols-4">
       {STATUSES.map((status) => (
         <Column key={status} project={project} status={status} sortByPriority={sortByPriority} />
       ))}

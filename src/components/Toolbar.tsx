@@ -62,7 +62,7 @@ export function Toolbar() {
       <AddTodo />
       <button
         onClick={() => setSortByPriority(!sortByPriority)}
-        className={`flex items-center gap-1 rounded-lg border px-3 py-2 text-sm ${
+        className={`flex items-center gap-1 rounded-lg border px-3 py-2 text-sm transition-all duration-150 hover:scale-105 active:scale-95 ${
           sortByPriority ? 'border-brand-500 bg-brand-500/10 text-brand-600' : 'border-border text-ink-soft'
         }`}
         aria-pressed={sortByPriority}
@@ -85,26 +85,26 @@ export function Toolbar() {
         />
         <button
           onClick={() => fileRef.current?.click()}
-          className="flex items-center gap-1 rounded-lg border border-border px-3 py-2 text-sm text-ink-soft hover:text-ink"
+          className="flex items-center gap-1 rounded-lg border border-border px-3 py-2 text-sm text-ink-soft transition-all duration-150 hover:scale-105 hover:text-ink active:scale-95"
         >
           <Upload size={16} /> {t('toolbar.import')}
         </button>
         <button
           onClick={handleExport}
-          className="flex items-center gap-1 rounded-lg border border-border px-3 py-2 text-sm text-ink-soft hover:text-ink"
+          className="flex items-center gap-1 rounded-lg border border-border px-3 py-2 text-sm text-ink-soft transition-all duration-150 hover:scale-105 hover:text-ink active:scale-95"
         >
           <Download size={16} /> {t('toolbar.export')}
         </button>
         <button
           onClick={cycleTheme}
           aria-label={t('toolbar.theme')}
-          className="flex items-center gap-1 rounded-lg border border-border px-3 py-2 text-sm text-ink-soft hover:text-ink"
+          className="flex items-center gap-1 rounded-lg border border-border px-3 py-2 text-sm text-ink-soft transition-all duration-150 hover:scale-105 hover:text-ink active:scale-95"
         >
           <ThemeIcon size={16} />
         </button>
         <button
           onClick={toggleLanguage}
-          className="flex items-center gap-1 rounded-lg bg-brand-600 px-3 py-2 text-sm text-white hover:bg-brand-500"
+          className="flex items-center gap-1 rounded-lg bg-brand-600 px-3 py-2 text-sm text-white transition-all duration-150 hover:bg-brand-500 hover:scale-105 active:scale-95"
         >
           <Languages size={16} /> {t('lang.toggle')}
         </button>

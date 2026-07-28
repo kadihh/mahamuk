@@ -1,0 +1,18 @@
+{
+  "name": "مهامك | Mahamok",
+  "short_name": "مهامك",
+  "description": "مدير مهام محلي بالكامل",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f7f5",
+  "theme_color": "#3b5bdb",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -73,7 +73,7 @@ export function TodoCard({ projectId, todo }: { projectId: string; todo: Todo })
     <div
       draggable
       onDragStart={onDragStart}
-      className="group cursor-grab rounded-xl border border-border bg-surface p-3 active:cursor-grabbing"
+      className="group cursor-grab animate-slide-up rounded-xl border border-border bg-surface p-3 active:cursor-grabbing"
     >
       <p className="break-words text-sm text-ink">{todo.text}</p>
       <div className="mt-2 flex items-center justify-between">
