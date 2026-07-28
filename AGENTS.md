@@ -28,4 +28,4 @@ There is no separate typecheck/lint ordering requirement; `build` already typech
 
 ## Gotchas
 - `oxlint` emits a `react(only-export-components)` warning for `useLanguage` exported alongside `LanguageProvider` — this is HMR-only noise, not an error. Keep hooks in the provider file for simplicity.
-- The active project tab cannot be closed (close button only shows when `projects.length > 1`).
+- The active project tab cannot be closed (close button only shows when `projects.length > 1` and the tab is not active).

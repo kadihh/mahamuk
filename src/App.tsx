@@ -34,10 +34,10 @@ function Shell() {
 export default function App() {
   useTheme()
   return (
-    <LanguageProvider>
-      <ErrorBoundary>
+    <ErrorBoundary>
+      <LanguageProvider>
         <Shell />
-      </ErrorBoundary>
-    </LanguageProvider>
+      </LanguageProvider>
+    </ErrorBoundary>
   )
 }
