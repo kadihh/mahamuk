@@ -110,6 +110,13 @@ Mahamuk is **local-first by design**:
 - All data stays in your browser's `localStorage` and is never transmitted.
 - Use **Export** to back up your data as a JSON file, or **Import** to restore it on any device.
 
+## Related projects
+
+More apps by the same author:
+
+- **مهامك (Mahamuk)** — this project: <https://mahamuk.pages.dev>
+- All other apps: <https://zinedev.pages.dev>
+
 ## Contact
 
 Found a bug or have a feature request? Reach out by email:
