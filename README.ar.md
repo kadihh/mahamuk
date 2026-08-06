@@ -5,7 +5,7 @@
 [![النسخة](https://img.shields.io/badge/version-0.1.0-blue)](#)
 [![الترخيص](https://img.shields.io/badge/license-All%20rights%20reserved-blue)](#)
 [![نرحّب بمساهماتكم](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
-[![المشكلات](https://img.shields.io/badge/issues-GitHub-blue)](https://github.com/zine-codes/mahamuk/issues)
+[![النسخة المباشرة](https://img.shields.io/badge/live-mahamuk.pages.dev-blue)](https://mahamuk.pages.dev)
 
 [**English** — read this file in English](README.md)
 
@@ -110,12 +110,11 @@ src/
 - كل البيانات تبقى في `localStorage` بمتصفّحك ولا تُرسل أبداً.
 - استخدم **تصدير** لإنشاء نسخة احتياطية من بياناتك كملف JSON، أو **استيراد** لاستعادتها على أي جهاز.
 
-## المشكلات والتواصل
+## التواصل
 
-وجدت خللاً أو تريد طلب ميزة؟ افتح مشكلة على GitHub:
+وجدت خللاً أو تريد طلب ميزة؟ تواصل عبر البريد الإلكتروني:
 
-- **المشكلات:** <https://github.com/zine-codes/mahamuk/issues>
-- **المستودع:** <https://github.com/zine-codes/mahamuk>
+- **البريد:** send.zine@gmail.com
 
 ## الترخيص
 

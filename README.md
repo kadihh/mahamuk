@@ -5,7 +5,7 @@
 [![Version](https://img.shields.io/badge/version-0.1.0-blue)](#)
 [![License](https://img.shields.io/badge/license-All%20rights%20reserved-blue)](#)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
-[![Issues](https://img.shields.io/badge/issues-GitHub-blue)](https://github.com/zine-codes/mahamuk/issues)
+[![Live](https://img.shields.io/badge/live-mahamuk.pages.dev-blue)](https://mahamuk.pages.dev)
 
 [**العربية** — اقرأ هذا الملف بالعربية](README.ar.md)
 
@@ -110,12 +110,11 @@ Mahamuk is **local-first by design**:
 - All data stays in your browser's `localStorage` and is never transmitted.
 - Use **Export** to back up your data as a JSON file, or **Import** to restore it on any device.
 
-## Issues & Contact
+## Contact
 
-Found a bug or have a feature request? Open an issue on GitHub:
+Found a bug or have a feature request? Reach out by email:
 
-- **Issues:** <https://github.com/zine-codes/mahamuk/issues>
-- **Repository:** <https://github.com/zine-codes/mahamuk>
+- **Email:** send.zine@gmail.com
 
 ## License
 

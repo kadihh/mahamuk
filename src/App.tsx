@@ -5,9 +5,9 @@ import { Toolbar } from './components/Toolbar'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { useStore } from './store/useStore'
 import { useTheme } from './theme/useTheme'
-import { ExternalLink } from 'lucide-react'
+import { Mail } from 'lucide-react'
 
-const ISSUES_URL = 'https://github.com/zine-codes/mahamuk/issues'
+const CONTACT_EMAIL = 'send.zine@gmail.com'
 
 function Shell() {
   const { t } = useLanguage()
@@ -32,19 +32,16 @@ function Shell() {
 
       <footer className="mt-auto flex justify-center gap-4 pb-1">
         <a
-          href={ISSUES_URL}
-          target="_blank"
-          rel="noreferrer"
+          href={`mailto:${CONTACT_EMAIL}`}
           className="inline-flex items-center gap-1 text-xs text-ink-soft transition-colors hover:text-ink"
         >
-          <ExternalLink size={12} />
-          {t('app.issues')}
+          <Mail size={12} />
+          {t('app.contact')}
         </a>
         <a
           href="https://zinedev.pages.dev"
           className="inline-flex items-center gap-1 text-xs text-ink-soft transition-colors hover:text-ink"
         >
-          <ExternalLink size={12} />
           {t('app.more')}
         </a>
       </footer>
