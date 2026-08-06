@@ -5,13 +5,16 @@ import { Toolbar } from './components/Toolbar'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { useStore } from './store/useStore'
 import { useTheme } from './theme/useTheme'
+import { ExternalLink } from 'lucide-react'
+
+const ISSUES_URL = 'https://github.com/zine-codes/mahamuk/issues'
 
 function Shell() {
   const { t } = useLanguage()
   const projectCount = useStore((s) => s.projects.length)
 
   return (
-    <div className="mx-auto flex h-screen max-w-7xl flex-col gap-3 p-4">
+    <div className="mx-auto flex h-dvh max-w-7xl flex-col gap-3 p-4">
       <header className="flex items-baseline gap-3">
         <h1 className="text-xl font-bold text-ink">{t('app.title')}</h1>
         <span className="text-xs text-ink-soft">{t('app.tagline')}</span>
@@ -27,6 +30,18 @@ function Shell() {
           <Board />
         </>
       )}
+
+      <footer className="mt-auto flex justify-center pb-1">
+        <a
+          href={ISSUES_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1 text-xs text-ink-soft transition-colors hover:text-ink"
+        >
+          <ExternalLink size={12} />
+          {t('app.issues')}
+        </a>
+      </footer>
     </div>
   )
 }

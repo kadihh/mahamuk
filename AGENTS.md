@@ -7,6 +7,7 @@ Local-only bilingual (Arabic-first) todo/kanban app. React 19 + TypeScript + Vit
 - `npm run build` — `tsc -b` (typecheck, noEmit) then `vite build`
 - `npm run lint` — **oxlint** (not eslint; config in `.oxlintrc.json`)
 - `npm run test` — **Vitest** (`vitest run`, jsdom env, setup `src/test/setup.ts`)
+- `npm run licenses` — regenerate `THIRD-PARTY-NOTICES.md` from installed production deps (`scripts/licenses.mjs`)
 - `npm run preview` — serve the production build
 
 There is no separate typecheck/lint ordering requirement; `build` already typechecks.

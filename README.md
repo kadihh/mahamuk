@@ -1,6 +1,23 @@
 # Mahamuk (مهامك)
 
+> **مدير مهام محلي بالكامل — العربية أولاً** | Fully local, Arabic-first task manager
+
+[![Version](https://img.shields.io/badge/version-0.1.0-blue)](#)
+[![License](https://img.shields.io/badge/license-All%20rights%20reserved-blue)](#)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
+[![Issues](https://img.shields.io/badge/issues-GitHub-blue)](https://github.com/zine-codes/mahamuk/issues)
+
+[**العربية** — اقرأ هذا الملف بالعربية](README.ar.md)
+
 A fully local, bilingual (Arabic-first / English) Kanban task manager. No backend — all data lives in your browser's `localStorage`.
+
+<!--
+Screenshot placeholder — replace with a real capture, e.g.:
+
+![Mahamuk screenshot](docs/screenshot.png)
+-->
+
+> 🚧 **Live demo:** coming soon — this link will be added once the app is deployed.
 
 ## Features
 
@@ -11,7 +28,8 @@ A fully local, bilingual (Arabic-first / English) Kanban task manager. No backen
 - **Arabic-first RTL** — full right-to-left layout, toggle to English anytime
 - **Dark / Light / System theme** — follows your OS preference
 - **Import / Export** — backup and restore all projects as a single JSON file
-- **100% local** — no server, no accounts, no data leaves your browser
+- **PWA** — installable, works offline (service worker + manifest)
+- **100% local & private** — no server, no accounts, no tracking, no data leaves your browser
 
 ## Tech Stack
 
@@ -23,6 +41,7 @@ A fully local, bilingual (Arabic-first / English) Kanban task manager. No backen
 | Styling | Tailwind CSS v4 (CSS-first) |
 | State | Zustand (persisted to localStorage) |
 | Icons | Lucide React |
+| PWA | vite-plugin-pwa + Workbox |
 | Linting | oxlint |
 | Testing | Vitest + jsdom |
 
@@ -44,6 +63,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 | `npm run preview` | Serve the production build |
 | `npm run test` | Run tests with Vitest |
 | `npm run lint` | Lint with oxlint |
+| `npm run licenses` | Regenerate `THIRD-PARTY-NOTICES.md` |
 
 ## Project Structure
 
@@ -82,6 +102,23 @@ src/
 
 All data is persisted to `localStorage` under the key `mahamok-store`.
 
+## Privacy
+
+Mahamuk is **local-first by design**:
+
+- No backend, no accounts, no cookies, no analytics.
+- All data stays in your browser's `localStorage` and is never transmitted.
+- Use **Export** to back up your data as a JSON file, or **Import** to restore it on any device.
+
+## Issues & Contact
+
+Found a bug or have a feature request? Open an issue on GitHub:
+
+- **Issues:** <https://github.com/zine-codes/mahamuk/issues>
+- **Repository:** <https://github.com/zine-codes/mahamuk>
+
 ## License
 
-Private — not published to npm.
+The code in this repository is **all rights reserved** (not published to npm, not open-source).
+
+This project bundles third-party open-source dependencies (React, Zustand, Lucide, Workbox, etc.). Their license texts are collected in **[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)**, regenerated with `npm run licenses`. Those dependencies retain their own licenses.

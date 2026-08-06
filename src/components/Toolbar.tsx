@@ -15,8 +15,9 @@ const THEME_ICON: Record<ThemeMode, typeof Moon> = {
 export function Toolbar() {
   const { t, toggleLanguage } = useLanguage()
   const { mode, setMode } = useTheme()
-  const { sortByPriority, setSortByPriority, exportData, importData } =
+  const { projectCount, sortByPriority, setSortByPriority, exportData, importData } =
     useStore(useShallow((s) => ({
+      projectCount: s.projects.length,
       sortByPriority: s.sortByPriority,
       setSortByPriority: s.setSortByPriority,
       exportData: s.exportData,
@@ -50,6 +51,10 @@ export function Toolbar() {
       const parsed = JSON.parse(text)
       const data = validateAppData(parsed)
       if (data.projects.length === 0) throw new Error('No valid projects found')
+      if (projectCount > 0 && !window.confirm(t('toolbar.importConfirm'))) {
+        setError(null)
+        return
+      }
       importData(data)
       setError(null)
     } catch (e) {

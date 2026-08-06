@@ -1,6 +1,7 @@
 {
   "app.title": "Mahamok",
   "app.tagline": "Fully local task manager",
+  "app.issues": "A suggestion or an issue? Reach out",
   "lang.toggle": "العربية",
   "project.new": "New project",
   "project.add": "Add",
@@ -23,6 +24,7 @@
   "toolbar.sortPriority": "Order by priority",
   "toolbar.import": "Import",
   "toolbar.export": "Export",
+  "toolbar.importConfirm": "Importing will replace your current data. Continue?",
   "toolbar.sortOn": "On",
   "toolbar.sortOff": "Off",
   "dialog.importTitle": "Import projects",

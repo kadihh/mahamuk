@@ -39,6 +39,7 @@ export function TodoCard({ projectId, todo }: { projectId: string; todo: Todo })
     return (
       <div className="rounded-xl border border-border bg-surface p-3">
         <textarea
+          autoFocus
           value={text}
           onChange={(e) => setText(e.target.value)}
           className="w-full resize-none rounded-lg border border-border bg-canvas p-2 text-sm"
@@ -80,7 +81,7 @@ export function TodoCard({ projectId, todo }: { projectId: string; todo: Todo })
         <span className={`rounded px-2 py-0.5 text-xs ${PRIO_CLASS[todo.priority]}`}>
           {t(`prio.${todo.priority}`)}
         </span>
-        <div className="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100 sm:[.group:hover_&]:opacity-100">
+        <div className="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
           <button
             onClick={() => moveTodo(projectId, todo.id, STATUS_META[todo.status].next)}
             className="text-xs text-brand-600 hover:text-brand-500"

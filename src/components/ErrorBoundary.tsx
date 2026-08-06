@@ -33,7 +33,7 @@ export class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       const msg = messages[getLang()]
       return (
-        <div className="flex h-screen items-center justify-center animate-shake">
+        <div className="flex h-dvh items-center justify-center animate-shake">
           <div className="text-center">
             <p className="text-lg font-semibold text-ink">{msg.error}</p>
             <button

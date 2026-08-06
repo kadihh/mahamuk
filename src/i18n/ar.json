@@ -1,6 +1,7 @@
 {
   "app.title": "مهامك",
   "app.tagline": "مدير مهام محلي بالكامل",
+  "app.issues": "اقتراح أو مشكلة؟ تواصل معنا",
   "lang.toggle": "English",
   "project.new": "مشروع جديد",
   "project.add": "إضافة",
@@ -23,6 +24,7 @@
   "toolbar.sortPriority": "ترتيب حسب الأولوية",
   "toolbar.import": "استيراد",
   "toolbar.export": "تصدير",
+  "toolbar.importConfirm": "سيستبدل الاستيراد بياناتك الحالية. متابعة؟",
   "toolbar.sortOn": "مُفعّل",
   "toolbar.sortOff": "مُعطّل",
   "dialog.importTitle": "استيراد المشاريع",
