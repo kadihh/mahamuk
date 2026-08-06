@@ -76,7 +76,12 @@ export function Board() {
   if (!project) return null
 
   return (
-    <div className="grid flex-1 grid-cols-1 gap-3 animate-fade-in sm:grid-cols-2 lg:grid-cols-4">
+    <div
+      id="board"
+      role="tabpanel"
+      aria-labelledby={`tab-${project.id}`}
+      className="grid flex-1 grid-cols-1 gap-3 animate-fade-in sm:grid-cols-2 lg:grid-cols-4"
+    >
       {STATUSES.map((status) => (
         <Column key={status} project={project} status={status} sortByPriority={sortByPriority} />
       ))}

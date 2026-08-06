@@ -27,9 +27,11 @@ export function AddTodo() {
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyDown={(e) => {
+          if (e.nativeEvent.isComposing) return
           if (e.key === 'Enter') submit()
         }}
         placeholder={t('todo.newPlaceholder')}
+        aria-label={t('todo.newPlaceholder')}
         className="min-w-[12rem] flex-1 rounded-lg border border-border bg-surface px-3 py-2 text-sm transition-all duration-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 focus:outline-none"
       />
       <select

@@ -17,7 +17,7 @@ Screenshot placeholder — replace with a real capture, e.g.:
 ![Mahamuk screenshot](docs/screenshot.png)
 -->
 
-> 🚧 **Live demo:** coming soon — this link will be added once the app is deployed.
+> 🚀 **Live demo:** <https://mahamuk.pages.dev/>
 
 ## Features
 

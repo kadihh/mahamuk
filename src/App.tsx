@@ -22,16 +22,15 @@ function Shell() {
 
       <ProjectTabs />
 
+      <Toolbar />
+
       {projectCount === 0 ? (
         <p className="py-10 text-center text-sm text-ink-soft">{t('project.empty')}</p>
       ) : (
-        <>
-          <Toolbar />
-          <Board />
-        </>
+        <Board />
       )}
 
-      <footer className="mt-auto flex justify-center pb-1">
+      <footer className="mt-auto flex justify-center gap-4 pb-1">
         <a
           href={ISSUES_URL}
           target="_blank"
@@ -40,6 +39,13 @@ function Shell() {
         >
           <ExternalLink size={12} />
           {t('app.issues')}
+        </a>
+        <a
+          href="https://zinedev.pages.dev"
+          className="inline-flex items-center gap-1 text-xs text-ink-soft transition-colors hover:text-ink"
+        >
+          <ExternalLink size={12} />
+          {t('app.more')}
         </a>
       </footer>
     </div>

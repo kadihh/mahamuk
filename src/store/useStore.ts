@@ -167,11 +167,28 @@ export const useStore = create<StoreState>()(
     }),
     {
       name: 'mahamok-store',
+      version: 1,
       partialize: (state): PersistedShape => ({
         projects: state.projects,
         activeProjectId: state.activeProjectId,
         sortByPriority: state.sortByPriority,
       }),
+      merge: (persisted, current) => {
+        const raw = persisted as Partial<PersistedShape> | undefined
+        if (!raw || typeof raw !== 'object' || !Array.isArray(raw.projects)) return current
+        const safe = validateAppData({ version: 1, projects: raw.projects })
+        const ids = new Set(safe.projects.map((p) => p.id))
+        const activeProjectId =
+          typeof raw.activeProjectId === 'string' && ids.has(raw.activeProjectId)
+            ? raw.activeProjectId
+            : (safe.projects[0]?.id ?? null)
+        return {
+          ...current,
+          projects: safe.projects,
+          activeProjectId,
+          sortByPriority: raw.sortByPriority === true,
+        }
+      },
     },
   ),
 )
